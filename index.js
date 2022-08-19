@@ -5,23 +5,23 @@ const app = express()
 app.use(cors()) //비워두면 모든 요청에 대해 허용
 
 app.get('/', function (req, res) {
-  res.send('Hello World 한글')
+  res.send('안녕하세요. 주소창에 /bear를 덧붙이면 곰이 나와요.')
 })
 
-//params은 콜론 뒤에 문자로 받는다.
-app.get('/user/:id', function (req, res) {
-    const q = req.params;
-    console.log(q);
-    res.json({'userid' : q.id});
-  })
-//query는 
-  app.get('/name/:id', function (req, res) {
-    const q = req.query;
-    console.log(q.q);
-    console.log(q.name);
-    res.json({'userid' : q.name});
+// //params은 콜론 뒤에 문자로 받는다.
+// app.get('/user/:id', function (req, res) {
+//     const q = req.params;
+//     console.log(q);
+//     res.json({'userid' : q.id});
+//   })
+// //query는 
+//   app.get('/name/:id', function (req, res) {
+//     const q = req.query;
+//     console.log(q.q);
+//     console.log(q.name);
+//     res.json({'userid' : q.name});
+//   })
 
-  })
   app.get('/sound/:name', (req, res) => {
     const { name } = req.params;
     if(name == "dog"){
@@ -33,14 +33,6 @@ app.get('/user/:id', function (req, res) {
     } else {
         res.json({'sound':'알 수 없음'})
     }
-  })
-
-app.get('/dog', function (req, res) {
-    res.json({'sound':'멍멍'})
-  })
-
-  app.get('/cat', function (req, res) {
-    res.send({'sound':'야옹'})
   })
 
 app.listen(3000)
